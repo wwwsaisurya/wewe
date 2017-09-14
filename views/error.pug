@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    div#location
+      h4 -
+    div#temp
+      h2 ERROR
+    div#title
+      p #{statusCodeError}
+    div#description
+      p (An error usually means that the location searched can't be identified by OpenWeatherMap.)
+    form(action="/clear" method="post")#newSearch
+      button(type="submit") Search another location

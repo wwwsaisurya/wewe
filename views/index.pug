@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  if info
+    div#location
+      if _refactoredLocation
+        h4 CLOSEST MATCH: #{info.location}, #{info.country}
+      else
+        h4 #{info.location}, #{info.country}
+    div#temp
+      img(src=`${info.icon}` alt="Weather Icon") 
+      h2 #{info.tempC}°C
+      button(type="submit")#converter Convert to °F
+    div#title
+      p #{info.title}
+    div#description
+      p #{info.description} 
+    form(action="/clear" method="post")#newSearch
+      button(type="submit") Search another location
+  else
+    form(action="/", method="post")#searchForm
+      label
+        input(type="text" name="location" autofocus="autofocus" placeholder="Search here!")#searchInput
+      button(type="submit" disabled)#submitButton Submit
